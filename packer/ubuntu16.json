@@ -1,0 +1,35 @@
+{
+"variables": {
+"proj_id": "week-3-217517",
+"machine_type": "f1-micro"
+},
+"builders": [
+{
+"type": "googlecompute",
+"project_id": "{{user `proj_id`}}",
+"image_name": "reddit-base-{{timestamp}}",
+"account_file": "application_default_credentials.json",
+"source_image": "ubuntu-1604-xenial-v20180912",
+"zone": "europe-west1-b",
+"ssh_username": "appuser",
+"machine_type": "{{user `machine_type`}}"
+}
+],
+"provisioners": [
+{
+"type": "shell",
+"script": "scripts/install_ruby.sh",
+"execute_command": "{{.Path}}"
+},
+{
+"type": "shell",
+"script": "scripts/install_mongodb.sh",
+"execute_command": "{{.Path}}"
+},
+{
+"type": "shell",
+"script": "scripts/cron.sh",
+"execute_command": "{{.Path}}"
+}
+]
+}
