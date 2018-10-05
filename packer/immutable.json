@@ -8,11 +8,15 @@
 "type": "googlecompute",
 "project_id": "{{user `proj_id`}}",
 "image_name": "reddit-base-{{timestamp}}",
+"disk_size": "11",
 "account_file": "application_default_credentials.json",
 "source_image": "ubuntu-1604-xenial-v20180912",
 "zone": "europe-west1-b",
 "ssh_username": "appuser",
-"machine_type": "{{user `machine_type`}}"
+"image_description": "This is a dimsan's image :) ",
+"machine_type": "{{user `machine_type`}}",
+"disk_type": "pd-standard",
+"tags": "http-server,https-server"
 }
 ],
 "provisioners": [
